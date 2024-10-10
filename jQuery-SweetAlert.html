@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sweet Alert</title>
+	<style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+	</style>
+</head>
+<body>
+	<div class="container">
+    <div class="verfication-popup">
+		  <h1><a href="https://www.youtube.com/">SweetAlert POPUP</a></h1>
+    </div>
+	</div>
+
+  <script src="jquery.min.js"></script>
+	<script src="sweetalert.min.js"></script>
+	<script>
+        jQuery(document).ready(function(){
+            jQuery('.verfication-popup h1 a').on('click', function(e){
+                e.preventDefault();
+                var url = jQuery(this).attr('href');
+                swal({
+                  text: "You must be at least 18 years of age to enter this section of Makkitt",
+                  icon: "warning",
+                  className: "age-verification-popup",
+                  dangerMode: true,
+                  buttons: ["NO I AM UNDER 18", "YES I AM OVER 18"]
+                })
+                .then((mode) => {
+                  if (mode === true) {
+                    swal("Your imaginary file is safe!", {
+                        icon: "success"
+                    });
+                    setTimeout(function(){ window.location.href = url; }, 1500);
+                  }
+                });                    
+            });
+        });
+    </script>
+</body>
+</html>
